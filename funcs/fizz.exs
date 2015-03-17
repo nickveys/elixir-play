@@ -6,10 +6,4 @@ fb = fn
      end
 
 fb2 = fn n -> fb.(rem(n, 3), rem(n, 5), n) end
-IO.puts(fb2.(10))
-IO.puts(fb2.(11))
-IO.puts(fb2.(12))
-IO.puts(fb2.(13))
-IO.puts(fb2.(14))
-IO.puts(fb2.(15))
-IO.puts(fb2.(16))
+Enum.each(1..20, &(IO.puts(fb2.(&1))))
