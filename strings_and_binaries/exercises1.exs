@@ -4,6 +4,16 @@ defmodule SBExercises do
     Enum.all?(charlist, &(?\s <= &1 && &1 <= ?~))
   end
 
+  def anagram?(word1, word2) when is_binary(word1) do
+    anagram?(String.to_char_list(word1), word2)
+  end
+  def anagram?(word1, word2) when is_binary(word2) do
+    anagram?(word1, String.to_char_list(word2))
+  end
+  def anagram?(word1, word2) do
+    Enum.sort(word1) == Enum.sort(word2)
+  end
+
 end
 
 SBExercises.all_printable?('hello')
@@ -13,4 +23,13 @@ SBExercises.all_printable?(' He~~o? ')
 |> IO.inspect
 
 SBExercises.all_printable?('hełło')
+|> IO.inspect
+
+SBExercises.anagram?("hello", "lloeh")
+|> IO.inspect
+
+SBExercises.anagram?('hey', 'yeh')
+|> IO.inspect
+
+SBExercises.anagram?('sup', 'post')
 |> IO.inspect
