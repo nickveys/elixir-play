@@ -25,6 +25,13 @@ defmodule SBExercises do
     IO.puts "#{pad}#{word}"
   end
 
+  def capitalize_sentences(str) do
+    String.split(str, ". ", trim: true)
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(". ")
+    |> (fn x -> x <> ". " end).()
+  end
+
 end
 
 SBExercises.all_printable?('hello')
@@ -46,3 +53,6 @@ SBExercises.anagram?('sup', 'post')
 |> IO.inspect
 
 SBExercises.center(["cat", "zebra", "elephant"])
+
+SBExercises.capitalize_sentences("oh. a DOG. woof. ")
+|> IO.inspect
