@@ -14,6 +14,17 @@ defmodule SBExercises do
     Enum.sort(word1) == Enum.sort(word2)
   end
 
+  def center(words) do
+    max = Enum.map(words, &String.length/1) |> Enum.max
+    Enum.each(words, &print_in_column(&1, max))
+  end
+
+  defp print_in_column(word, column_width) do
+    spaces = div(column_width - String.length(word), 2)
+    pad = String.duplicate(" ", spaces)
+    IO.puts "#{pad}#{word}"
+  end
+
 end
 
 SBExercises.all_printable?('hello')
@@ -33,3 +44,5 @@ SBExercises.anagram?('hey', 'yeh')
 
 SBExercises.anagram?('sup', 'post')
 |> IO.inspect
+
+SBExercises.center(["cat", "zebra", "elephant"])
