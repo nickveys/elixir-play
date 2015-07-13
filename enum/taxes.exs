@@ -1,5 +1,12 @@
 defmodule Taxes do
 
+  def read_orders do
+    file = File.open!("#{__DIR__}/orders.csv")
+    # IO.stream(file, :line)
+    # |> Enum.map
+    []
+  end
+
   def total(orders, rates) do
     _total(orders, rates)
   end
@@ -31,6 +38,12 @@ orders = [
   [ id: 129, ship_to: :CA, net_amount: 102.00 ],
   [ id: 120, ship_to: :NC, net_amount:  50.00 ]
 ]
+
+Taxes.total(orders, tax_rates)
+|> IO.inspect
+
+orders = Taxes.read_orders
+|> IO.inspect
 
 Taxes.total(orders, tax_rates)
 |> IO.inspect
